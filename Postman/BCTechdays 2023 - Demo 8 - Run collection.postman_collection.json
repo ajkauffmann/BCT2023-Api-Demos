@@ -1,0 +1,882 @@
+{
+	"info": {
+		"_postman_id": "31591d53-c4f5-4c4d-8ec2-60c591b05a2b",
+		"name": "BCTechdays 2023 - Demo 8 - Run collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "761742"
+	},
+	"item": [
+		{
+			"name": "customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response is a json object\", () => {\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"let schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"@odata.etag\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"id\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"number\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"displayName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"type\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"addressLine1\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"addressLine2\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"city\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"state\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"country\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"postalCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"phoneNumber\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"email\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"website\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"salespersonCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"balanceDue\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"creditLimit\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"taxLiable\": {\r",
+							"      \"type\": \"boolean\"\r",
+							"    },\r",
+							"    \"taxAreaId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"taxAreaDisplayName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"taxRegistrationNumber\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"currencyId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"currencyCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"paymentTermsId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipmentMethodId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"paymentMethodId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"blocked\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModifiedDateTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"@odata.etag\",\r",
+							"    \"id\",\r",
+							"    \"number\",\r",
+							"    \"displayName\",\r",
+							"    \"type\",\r",
+							"    \"addressLine1\",\r",
+							"    \"addressLine2\",\r",
+							"    \"city\",\r",
+							"    \"state\",\r",
+							"    \"country\",\r",
+							"    \"postalCode\",\r",
+							"    \"phoneNumber\",\r",
+							"    \"email\",\r",
+							"    \"website\",\r",
+							"    \"salespersonCode\",\r",
+							"    \"balanceDue\",\r",
+							"    \"creditLimit\",\r",
+							"    \"taxLiable\",\r",
+							"    \"taxAreaId\",\r",
+							"    \"taxAreaDisplayName\",\r",
+							"    \"taxRegistrationNumber\",\r",
+							"    \"currencyId\",\r",
+							"    \"currencyCode\",\r",
+							"    \"paymentTermsId\",\r",
+							"    \"shipmentMethodId\",\r",
+							"    \"paymentMethodId\",\r",
+							"    \"blocked\",\r",
+							"    \"lastModifiedDateTime\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response schema is valid\", () => {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The response has all properties\", () => {\r",
+							"    // pm.expect(jsonData.displayName).to.eql(pm.variables.get(\"companyName\"));\r",
+							"    pm.expect(jsonData.city).to.eql('Antwerp');\r",
+							"    pm.expect(jsonData.country).to.eql('BE');\r",
+							"    pm.expect(jsonData.type).to.eql('Company');\r",
+							"    pm.expect(jsonData.currencyCode).to.eql('EUR');\r",
+							"});\r",
+							"\r",
+							"pm.variables.set(\"newCustomerId\", jsonData.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json; odata.metadata=minimal",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"displayName\": \"{{companyName}}\",\r\n    \"city\": \"Antwerp\",\r\n    \"country\": \"BE\",\r\n    \"type\": \"Company\",\r\n    \"currencyCode\": \"EUR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v2.0/companies({{companyId}})/customers()",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2.0",
+						"companies({{companyId}})",
+						"customers()"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response is a json object\", () => {\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"pm.variables.set(\"newItemId\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "da-dk",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"displayName\" : \"{{itemName}}\",\n    \"unitPrice\": {{itemPrice}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v2.0/companies({{companyId}})/items",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2.0",
+						"companies({{companyId}})",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "item - set inventory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response is a json object\", () => {\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Inventory is set\", () => {\r",
+							"    pm.expect(jsonData.inventory).to.eql(100);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "If-Match",
+						"value": "*",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"inventory\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v2.0/companies({{companyId}})/items({{newItemId}})",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2.0",
+						"companies({{companyId}})",
+						"items({{newItemId}})"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "salesOrder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response is a json object\", () => {\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"let schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"@odata.context\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"@odata.etag\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"id\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"number\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"externalDocumentNumber\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"orderDate\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"postingDate\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"customerId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"customerNumber\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"customerName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToCustomerId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToCustomerNumber\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToContact\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"sellToAddressLine1\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"sellToAddressLine2\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"sellToCity\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"sellToCountry\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"sellToState\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"sellToPostCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToAddressLine1\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToAddressLine2\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToCity\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToCountry\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToState\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"billToPostCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToAddressLine1\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToAddressLine2\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToCity\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToCountry\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToState\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipToPostCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shortcutDimension1Code\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shortcutDimension2Code\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"currencyId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"currencyCode\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"pricesIncludeTax\": {\r",
+							"      \"type\": \"boolean\"\r",
+							"    },\r",
+							"    \"paymentTermsId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"shipmentMethodId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"salesperson\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"partialShipping\": {\r",
+							"      \"type\": \"boolean\"\r",
+							"    },\r",
+							"    \"requestedDeliveryDate\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"discountAmount\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"discountAppliedBeforeTax\": {\r",
+							"      \"type\": \"boolean\"\r",
+							"    },\r",
+							"    \"totalAmountExcludingTax\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"totalTaxAmount\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"totalAmountIncludingTax\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"fullyShipped\": {\r",
+							"      \"type\": \"boolean\"\r",
+							"    },\r",
+							"    \"status\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModifiedDateTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"phoneNumber\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"email\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"salesOrderLines\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"@odata.etag\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"id\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"documentId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"sequence\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"itemId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"accountId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"lineType\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"lineObjectNumber\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"description\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"unitOfMeasureId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"unitOfMeasureCode\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"quantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"unitPrice\": {\r",
+							"              \"type\": \"number\"\r",
+							"            },\r",
+							"            \"discountAmount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"discountPercent\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"discountAppliedBeforeTax\": {\r",
+							"              \"type\": \"boolean\"\r",
+							"            },\r",
+							"            \"amountExcludingTax\": {\r",
+							"              \"type\": \"number\"\r",
+							"            },\r",
+							"            \"taxCode\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"taxPercent\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"totalTaxAmount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"amountIncludingTax\": {\r",
+							"              \"type\": \"number\"\r",
+							"            },\r",
+							"            \"invoiceDiscountAllocation\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"netAmount\": {\r",
+							"              \"type\": \"number\"\r",
+							"            },\r",
+							"            \"netTaxAmount\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"netAmountIncludingTax\": {\r",
+							"              \"type\": \"number\"\r",
+							"            },\r",
+							"            \"shipmentDate\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"shippedQuantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"invoicedQuantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"invoiceQuantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"shipQuantity\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"itemVariantId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"locationId\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"@odata.etag\",\r",
+							"            \"id\",\r",
+							"            \"documentId\",\r",
+							"            \"sequence\",\r",
+							"            \"itemId\",\r",
+							"            \"accountId\",\r",
+							"            \"lineType\",\r",
+							"            \"lineObjectNumber\",\r",
+							"            \"description\",\r",
+							"            \"unitOfMeasureId\",\r",
+							"            \"unitOfMeasureCode\",\r",
+							"            \"quantity\",\r",
+							"            \"unitPrice\",\r",
+							"            \"discountAmount\",\r",
+							"            \"discountPercent\",\r",
+							"            \"discountAppliedBeforeTax\",\r",
+							"            \"amountExcludingTax\",\r",
+							"            \"taxCode\",\r",
+							"            \"taxPercent\",\r",
+							"            \"totalTaxAmount\",\r",
+							"            \"amountIncludingTax\",\r",
+							"            \"invoiceDiscountAllocation\",\r",
+							"            \"netAmount\",\r",
+							"            \"netTaxAmount\",\r",
+							"            \"netAmountIncludingTax\",\r",
+							"            \"shipmentDate\",\r",
+							"            \"shippedQuantity\",\r",
+							"            \"invoicedQuantity\",\r",
+							"            \"invoiceQuantity\",\r",
+							"            \"shipQuantity\",\r",
+							"            \"itemVariantId\",\r",
+							"            \"locationId\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"@odata.context\",\r",
+							"    \"@odata.etag\",\r",
+							"    \"id\",\r",
+							"    \"number\",\r",
+							"    \"externalDocumentNumber\",\r",
+							"    \"orderDate\",\r",
+							"    \"postingDate\",\r",
+							"    \"customerId\",\r",
+							"    \"customerNumber\",\r",
+							"    \"customerName\",\r",
+							"    \"billToName\",\r",
+							"    \"billToCustomerId\",\r",
+							"    \"billToCustomerNumber\",\r",
+							"    \"shipToName\",\r",
+							"    \"shipToContact\",\r",
+							"    \"sellToAddressLine1\",\r",
+							"    \"sellToAddressLine2\",\r",
+							"    \"sellToCity\",\r",
+							"    \"sellToCountry\",\r",
+							"    \"sellToState\",\r",
+							"    \"sellToPostCode\",\r",
+							"    \"billToAddressLine1\",\r",
+							"    \"billToAddressLine2\",\r",
+							"    \"billToCity\",\r",
+							"    \"billToCountry\",\r",
+							"    \"billToState\",\r",
+							"    \"billToPostCode\",\r",
+							"    \"shipToAddressLine1\",\r",
+							"    \"shipToAddressLine2\",\r",
+							"    \"shipToCity\",\r",
+							"    \"shipToCountry\",\r",
+							"    \"shipToState\",\r",
+							"    \"shipToPostCode\",\r",
+							"    \"shortcutDimension1Code\",\r",
+							"    \"shortcutDimension2Code\",\r",
+							"    \"currencyId\",\r",
+							"    \"currencyCode\",\r",
+							"    \"pricesIncludeTax\",\r",
+							"    \"paymentTermsId\",\r",
+							"    \"shipmentMethodId\",\r",
+							"    \"salesperson\",\r",
+							"    \"partialShipping\",\r",
+							"    \"requestedDeliveryDate\",\r",
+							"    \"discountAmount\",\r",
+							"    \"discountAppliedBeforeTax\",\r",
+							"    \"totalAmountExcludingTax\",\r",
+							"    \"totalTaxAmount\",\r",
+							"    \"totalAmountIncludingTax\",\r",
+							"    \"fullyShipped\",\r",
+							"    \"status\",\r",
+							"    \"lastModifiedDateTime\",\r",
+							"    \"phoneNumber\",\r",
+							"    \"email\",\r",
+							"    \"salesOrderLines\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response schema is valid\", () => {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Prefer",
+						"value": "return-no-content",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \t\n    \"customerId\": \"{{newCustomerId}}\",\n    \"salesOrderLines\": [\n        {\n            \"itemId\": \"{{newItemId}}\",\n            \"quantity\": 5\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v2.0/companies({{companyId}})/salesOrders?$expand=salesOrderLines",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2.0",
+						"companies({{companyId}})",
+						"salesOrders"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "salesOrderLines"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "scope",
+				"value": "{{impersonation_scope}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://login.microsoftonline.com/organizations/oauth2/v2.0/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://login.microsoftonline.com/common/oauth2/nativeclient",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "{{environment}}",
+				"type": "string"
+			},
+			{
+				"key": "refreshRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "authRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.variables.set(\"companyName\", pm.variables.replaceIn(\"{{$randomCompanyName}}\"));",
+					"pm.variables.set(\"itemName\", pm.variables.replaceIn(\"{{$randomProductName}}\"));",
+					"pm.variables.set(\"itemPrice\", pm.variables.replaceIn(\"{{$randomPrice}}\"));",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "customerId",
+			"value": ""
+		}
+	]
+}

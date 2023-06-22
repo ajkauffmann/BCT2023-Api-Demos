@@ -1,0 +1,899 @@
+{
+	"info": {
+		"_postman_id": "d256c373-42ee-4b9b-930f-d3a343f3508c",
+		"name": "BCTechdays 2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "761742"
+	},
+	"item": [
+		{
+			"name": "Init",
+			"item": [
+				{
+					"name": "companies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"companyId\", jsonData.value[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2.0/companies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demo 2 - API triggers",
+			"item": [
+				{
+					"name": "demoHeaders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "demoHeaders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"field5\": true,\r\n    \"field2\": \"Some value\",\r\n    \"field7\": \"10:00:00\",\r\n    \"field8\": \"2022-02-26T16:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "demoHeaders",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"field5\": true,\r\n    \"field2\": \"Some patched value\",\r\n    \"field8\": \"2022-02-26T16:00:00Z\",\r\n    \"field7\": \"13:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders(08c0ecad-9f0e-ee11-8431-b893ecf4163d)",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders(08c0ecad-9f0e-ee11-8431-b893ecf4163d)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "demoHeaders",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders(08c0ecad-9f0e-ee11-8431-b893ecf4163d)",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders(08c0ecad-9f0e-ee11-8431-b893ecf4163d)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "demoLines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders(5a63eb63-0697-ec11-bd56-bf0a647d204a)/demoLines",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders(5a63eb63-0697-ec11-bd56-bf0a647d204a)",
+								"demoLines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "demoLines",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"field5\": 1234.56\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders(b0ef18a3-4a9a-ec11-bd56-bf0a647d204a)/demoLines",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders(b0ef18a3-4a9a-ec11-bd56-bf0a647d204a)",
+								"demoLines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "demoHeaders $expand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demoHeaders(b0ef18a3-4a9a-ec11-bd56-bf0a647d204a)?$expand=demoLines",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demoHeaders(b0ef18a3-4a9a-ec11-bd56-bf0a647d204a)"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "demoLines"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "global vars",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Demo Company 777\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/globalvars",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"globalvars"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demo 4 - Bound Actions",
+			"item": [
+				{
+					"name": "items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demo4Items",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demo4Items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setDescription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": \"BC Techdays 2023 Special Table\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demo4Items({{itemId}})/Microsoft.NAV.setDescription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demo4Items({{itemId}})",
+								"Microsoft.NAV.setDescription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "copyItem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demo4Items({{itemId}})/Microsoft.NAV.copyItem",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demo4Items({{itemId}})",
+								"Microsoft.NAV.copyItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPrice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerNumber\": \"10000\",\r\n    \"quantity\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/demo4Items({{itemId}})/Microsoft.NAV.getPrice",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"demo4Items({{itemId}})",
+								"Microsoft.NAV.getPrice"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demo 5 - Relationships",
+			"item": [
+				{
+					"name": "items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cronus/demo/v1.0/companies({{companyId}})/items?$expand=itemCategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cronus",
+								"demo",
+								"v1.0",
+								"companies({{companyId}})",
+								"items"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "itemCategory"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demo 6 - Reducing payload",
+			"item": [
+				{
+					"name": "$select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2.0/companies({{companyId}})/customers?$select=id,number,displayName,email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"companies({{companyId}})",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "id,number,displayName,email"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "$expand + $select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})?$select=id,number,invoiceDate,totalAmountIncludingTax&$expand=customer($select=id,number,displayName,email;$expand=customerFinancialDetail),salesInvoiceLines($select=id,sequence,lineType,lineObjectNumber,description,quantity,unitOfMeasureCode,unitPrice,netAmount;$expand=account,item($select=id,number,inventory,unitCost;$expand=unitOfMeasure))",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"companies({{companyId}})",
+								"salesInvoices({{salesInvoiceId}})"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "id,number,invoiceDate,totalAmountIncludingTax"
+								},
+								{
+									"key": "$expand",
+									"value": "customer($select=id,number,displayName,email;$expand=customerFinancialDetail),salesInvoiceLines($select=id,sequence,lineType,lineObjectNumber,description,quantity,unitOfMeasureCode,unitPrice,netAmount;$expand=account,item($select=id,number,inventory,unitCost;$expand=unitOfMeasure))"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Prefer maxpagesize",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Prefer",
+								"value": "odata.maxpagesize=3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2.0/companies({{companyId}})/customers?$select=id,number",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"companies({{companyId}})",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "id,number"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "direct navigate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Company",
+								"value": "{{companyId}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json; odata.metadata=none",
+								"description": "none / minimal / full",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2.0/items({{itemId}})/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"items({{itemId}})",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept odata.metadata",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Company",
+								"value": "{{companyId}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json; odata.metadata=minimal",
+								"description": "none / minimal / full",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2.0/items?$select=id,number,displayName,inventory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "id,number,displayName,inventory"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demo 7 - Test script",
+			"item": [
+				{
+					"name": "customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json; odata.metadata=minimal",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2.0/companies({{companyId}})/customers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"companies({{companyId}})",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response is a json object\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"@odata.etag\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"number\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"displayName\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"type\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"addressLine1\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"addressLine2\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"city\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"state\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"country\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"postalCode\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"phoneNumber\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"email\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"website\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"salespersonCode\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"balanceDue\": {\r",
+									"      \"type\": \"number\"\r",
+									"    },\r",
+									"    \"creditLimit\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"taxLiable\": {\r",
+									"      \"type\": \"boolean\"\r",
+									"    },\r",
+									"    \"taxAreaId\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"taxAreaDisplayName\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"taxRegistrationNumber\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"currencyId\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"currencyCode\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"paymentTermsId\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"shipmentMethodId\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"paymentMethodId\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"blocked\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"lastModifiedDateTime\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"@odata.etag\",\r",
+									"    \"id\",\r",
+									"    \"number\",\r",
+									"    \"displayName\",\r",
+									"    \"type\",\r",
+									"    \"addressLine1\",\r",
+									"    \"addressLine2\",\r",
+									"    \"city\",\r",
+									"    \"state\",\r",
+									"    \"country\",\r",
+									"    \"postalCode\",\r",
+									"    \"phoneNumber\",\r",
+									"    \"email\",\r",
+									"    \"website\",\r",
+									"    \"salespersonCode\",\r",
+									"    \"balanceDue\",\r",
+									"    \"creditLimit\",\r",
+									"    \"taxLiable\",\r",
+									"    \"taxAreaId\",\r",
+									"    \"taxAreaDisplayName\",\r",
+									"    \"taxRegistrationNumber\",\r",
+									"    \"currencyId\",\r",
+									"    \"currencyCode\",\r",
+									"    \"paymentTermsId\",\r",
+									"    \"shipmentMethodId\",\r",
+									"    \"paymentMethodId\",\r",
+									"    \"blocked\",\r",
+									"    \"lastModifiedDateTime\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Response schema is valid\", () => {\r",
+									"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has all properties\", () => {\r",
+									"    pm.expect(jsonData.displayName).to.eql('BC Techdays 2023');\r",
+									"    pm.expect(jsonData.city).to.eql('Antwerp');\r",
+									"    pm.expect(jsonData.country).to.eql('BE');\r",
+									"    pm.expect(jsonData.type).to.eql('Company');\r",
+									"    pm.expect(jsonData.currencyCode).to.eql('EUR');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json; odata.metadata=minimal",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"displayName\": \"BC Techdays 2023\",\r\n    \"city\": \"Antwerp\",\r\n    \"country\": \"BE\",\r\n    \"type\": \"Company\",\r\n    \"currencyCode\": \"EUR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2.0/companies({{companyId}})/customers()",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2.0",
+								"companies({{companyId}})",
+								"customers()"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "{{impersonation_scope}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://login.microsoftonline.com/organizations/oauth2/v2.0/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://login.microsoftonline.com/common/oauth2/nativeclient",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "{{environment}}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
